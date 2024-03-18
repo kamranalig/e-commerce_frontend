@@ -19,28 +19,23 @@ const ProductCard = () => {
               height={28}
               width={28}
             />
-            {/* <Link href={`/collections/${item._id}`}> */}
+
             <Image
               src="/serachIcon.svg"
               alt="search icon"
               height={28}
               width={28}
             />
-            {/* </Link> */}
             <Image src="/cart.svg" alt="cart icon" height={28} width={28} />
           </div>
         )}
-        {/* <Link href={`/collections/${item._id}`}> */}
         <img
           src="/p1.jpg"
           alt=""
           className="w-full object-cover mb-2 sm:mb-4"
         />
-        {/* </Link> */}
-        <div className="font-bold text-sm sm:text-base capitalize">
-          trim dress
-        </div>
-        <div className="text-sm sm:text-base">$200</div>
+        <p className="font-bold text-sm sm:text-base capitalize">trim dress</p>
+        <p className="text-sm sm:text-base">$200</p>
       </div>
     </>
   );
