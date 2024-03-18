@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { ProductData } from "@/data";
 import ProductCard from "./SectionCard";
 
-const CardsComponent = () => {
+const HomeCardsComponent = () => {
   const [activeFilter, setActiveFilter] = useState("All");
   const handleFilterChange = (filter) => {
     setActiveFilter(filter);
@@ -21,7 +21,7 @@ const CardsComponent = () => {
   return (
     <>
       <ul className="flex justify-center md:gap-3 mb-6">
-        {["All", "New Arrivel", "Featured", "Special"].map((filter) => (
+        {["All", "New Arrival", "Featured", "Special"].map((filter) => (
           <li
             key={filter}
             className={`px-2 md:px-6 uppercase md:text-lg cursor-pointer ${
@@ -44,4 +44,4 @@ const CardsComponent = () => {
   );
 };
 
-export default CardsComponent;
+export default HomeCardsComponent;

@@ -1,4 +1,5 @@
 import MainCarosal from "@/components/homeCarosal/HomeCarosal";
+import HomeCardsComponent from "@/components/sectionCard/HomeProductSec";
 import Image from "next/image";
 import Link from "next/link";
 export default function Home() {
@@ -72,7 +73,7 @@ export default function Home() {
           <h2 className="relative text-center text-2xl md:text-[32px] font-bold pb-2 after:absolute after:w-[70px] after:bg-[#B0574F] after:'' after:left-0 after:right-0 after:h-[2px] after:mx-auto after:bottom-0 mb-7">
             SPECIAL PRODUCTS
           </h2>
-          {/* <CardsComponent /> */}
+          <HomeCardsComponent />
         </div>
       </div>
       <hr className="max-w-[1140px] mx-auto" />

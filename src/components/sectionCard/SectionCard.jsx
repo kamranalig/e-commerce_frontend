@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 
-const ProductCard = () => {
+const ProductCard = ({ item }) => {
   const [isHovered, setIsHovered] = useState(false);
   return (
     <>
@@ -30,12 +30,14 @@ const ProductCard = () => {
           </div>
         )}
         <img
-          src="/p1.jpg"
-          alt=""
+          src={item.imgSrc}
+          alt={item.imgAlt}
           className="w-full object-cover mb-2 sm:mb-4"
         />
-        <p className="font-bold text-sm sm:text-base capitalize">trim dress</p>
-        <p className="text-sm sm:text-base">$200</p>
+        <p className="font-bold text-sm sm:text-base capitalize">
+          {item.title}
+        </p>
+        <p className="text-sm sm:text-base">${item.price}</p>
       </div>
     </>
   );
