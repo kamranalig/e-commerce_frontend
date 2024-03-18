@@ -1,4 +1,5 @@
 import ServicesComponent from "@/components/ServicesComponent";
+import CompanyCard from "@/components/companiesCards";
 import MainCarosal from "@/components/homeCarosal/HomeCarosal";
 import HomeCardsComponent from "@/components/sectionCard/HomeProductSec";
 import Image from "next/image";
@@ -80,6 +81,7 @@ export default function Home() {
       <hr className="max-w-[1140px] mx-auto" />
       <ServicesComponent />
       <hr className="max-w-[1140px] mx-auto" />
+      <CompanyCard />
     </>
   );
 }
