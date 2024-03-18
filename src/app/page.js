@@ -1,3 +1,8 @@
+import MainCarosal from "@/components/homeCarosal/HomeCarosal";
 export default function Home() {
-  return <main>Hello world</main>;
+  return (
+    <>
+      <MainCarosal />
+    </>
+  );
 }
