@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Link from "next/link";
 import Image from "next/image";
 
 const ProductCard = ({ item }) => {
@@ -29,15 +30,17 @@ const ProductCard = ({ item }) => {
             <Image src="/cart.svg" alt="cart icon" height={28} width={28} />
           </div>
         )}
-        <img
-          src={item.imgSrc}
-          alt={item.imgAlt}
-          className="w-full object-cover mb-2 sm:mb-4"
-        />
-        <p className="font-bold text-sm sm:text-base capitalize">
-          {item.title}
-        </p>
-        <p className="text-sm sm:text-base">${item.price}</p>
+        <Link href={`/collections/${item.id}`}>
+          <img
+            src={item.imgSrc}
+            alt={item.imgAlt}
+            className="w-full object-cover mb-2 sm:mb-4"
+          />
+          <p className="font-bold text-sm sm:text-base capitalize">
+            {item.title}
+          </p>
+          <p className="text-sm sm:text-base">${item.price}</p>
+        </Link>
       </div>
     </>
   );
