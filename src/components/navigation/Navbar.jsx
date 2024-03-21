@@ -20,7 +20,7 @@ export default function Navbar() {
   const [openAuthModal, setOpenAuthModal] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const openUserMenu = Boolean(anchorEl);
-  const jwt = localStorage.getItem("jwt");
+  // const jwt = localStorage.getItem("jwt");
 
   const handleUserClick = (e) => {
     setAnchorEl(e.currentTarget);
