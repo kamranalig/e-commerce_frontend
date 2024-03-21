@@ -15,7 +15,7 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
-
+import { useRouter } from "next/navigation";
 import { ProductData } from "@/data";
 import { filters, singleFilter } from "@/data/filter";
 import ProductCard from "@/components/sectionCard/SectionCard";
@@ -30,7 +30,39 @@ function classNames(...classes) {
 
 export default function Products() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  const router = useRouter();
 
+  const handleFilter = (value, sectionId) => {
+    if (typeof window !== "undefined") {
+      const searchParams = new URLSearchParams(window.location.search);
+      let filterValue = searchParams.getAll(sectionId);
+
+      if (filterValue.length > 0 && filterValue[0].split(",").includes(value)) {
+        filterValue = filterValue[0]
+          .split(",")
+          .filter((item) => item !== value);
+        if (filterValue.length === 0) {
+          searchParams.delete(sectionId);
+        }
+      } else {
+        filterValue.push(value);
+      }
+
+      if (filterValue.length > 0) {
+        searchParams.set(sectionId, filterValue.join(","));
+      }
+
+      const query = searchParams.toString();
+      window.history.replaceState(null, null, `?${query}`);
+    }
+  };
+  const handleRadioFilterChange = (e, sectionId) => {
+    console.log(e);
+    const searchParams = new URLSearchParams(window.location.search);
+    searchParams.set(sectionId, e.target.value);
+    const query = searchParams.toString();
+    window.history.replaceState(null, null, `?${query}`);
+  };
   return (
     <div className="bg-white">
       <div>
@@ -116,6 +148,9 @@ export default function Products() {
                                     className="flex items-center"
                                   >
                                     <input
+                                      onChange={() =>
+                                        handleFilter(option.value, section.id)
+                                      }
                                       id={`filter-mobile-${section.id}-${optionIdx}`}
                                       name={`${section.id}[]`}
                                       defaultValue={option.value}
@@ -205,7 +240,7 @@ export default function Products() {
         <main className="mx-auto px-4 max-w-[1140px] sm:px-6 lg:px-1">
           <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-24">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900">
-              New Arrivals
+              Products
             </h1>
 
             <div className="flex items-center">
@@ -320,6 +355,9 @@ export default function Products() {
                                   className="flex items-center"
                                 >
                                   <input
+                                    onChange={() =>
+                                      handleFilter(option.value, section.id)
+                                    }
                                     id={`filter-mobile-${section.id}-${optionIdx}`}
                                     name={`${section.id}[]`}
                                     defaultValue={option.value}
@@ -383,6 +421,9 @@ export default function Products() {
                                   {section.options.map((option, optionIdx) => (
                                     <div key={optionIdx}>
                                       <FormControlLabel
+                                        onChange={(e) =>
+                                          handleRadioFilterChange(e, section.id)
+                                        }
                                         value={option.value}
                                         control={<Radio />}
                                         label={option.label}
