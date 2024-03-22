@@ -6,10 +6,11 @@ import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-
+import DeliveryAddressForm from "../../components/deliveryAddressForm/DeliveryAddressForm";
+import OrderSummary from "../../components/orderSummary/OrderSummary";
 const steps = ["Login", "Delevery Address", "Order Summary", "Payment"];
 
-export default function HorizontalLinearStepper() {
+export default function Checkout() {
   const [activeStep, setActiveStep] = React.useState(0);
   const querySearch = new URLSearchParams(window.location.search);
 
@@ -54,12 +55,8 @@ export default function HorizontalLinearStepper() {
               >
                 Back
               </Button>
-              <Box sx={{ flex: "1 1 auto" }} />
-
-              <Button onClick={handleNext}>
-                {activeStep === steps.length - 1 ? "Finish" : "Next"}
-              </Button>
             </Box>
+            <div>{step == 2 ? <DeliveryAddressForm /> : <OrderSummary />}</div>
           </React.Fragment>
         )}
       </Box>
