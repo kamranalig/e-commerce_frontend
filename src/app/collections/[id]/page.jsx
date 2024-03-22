@@ -1,8 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import Rating from "@mui/material/Rating";
 import { RadioGroup } from "@headlessui/react";
-import Grid from "@mui/material/Grid";
+import { Grid, Box, LinearProgress, Rating } from "@mui/material";
 import ProductReviews from "../../../components/DetailReviews/ProductReviews";
 const product = {
   name: "Basic Tee 6-Pack",
@@ -292,6 +291,84 @@ const ProductDetail = ({ params }) => {
                     ))}
                   </div>
                 </Grid>
+                <Grid item xs={5}>
+                  <h1 className="text-xl font-semibold pb-2">Product Rating</h1>
+                  <div className="flex items-center space-x-3">
+                    <Rating value={4.6} precision={0.5} readOnly />
+                    <p className=" opacity-60">54890 Rating</p>
+                  </div>
+
+                  <Box className="mt-5 space-y-3">
+                    <Grid container alignItems="center" gap={2}>
+                      <Grid item xs={2}>
+                        <p>Excellent</p>
+                      </Grid>
+                      <Grid item xs={7}>
+                        <LinearProgress
+                          sx={{
+                            bgcolor: "#d0d0d0",
+                            borderRadius: 4,
+                            height: 7,
+                          }}
+                          variant="determinate"
+                          value={40}
+                          color="success"
+                        />
+                      </Grid>
+                    </Grid>
+                    <Grid container alignItems="center" gap={2}>
+                      <Grid item xs={2}>
+                        <p>Very Good</p>
+                      </Grid>
+                      <Grid item xs={7}>
+                        <LinearProgress
+                          sx={{
+                            bgcolor: "#d0d0d0",
+                            borderRadius: 4,
+                            height: 7,
+                          }}
+                          variant="determinate"
+                          value={30}
+                          color="success"
+                        />
+                      </Grid>
+                    </Grid>
+                    <Grid container alignItems="center" gap={2}>
+                      <Grid item xs={2}>
+                        <p>Avarage</p>
+                      </Grid>
+                      <Grid item xs={7}>
+                        <LinearProgress
+                          sx={{
+                            bgcolor: "#d0d0d0",
+                            borderRadius: 4,
+                            height: 7,
+                          }}
+                          variant="determinate"
+                          value={20}
+                          color="warning"
+                        />
+                      </Grid>
+                    </Grid>
+                    <Grid container alignItems="center" gap={2}>
+                      <Grid item xs={2}>
+                        <p>Poor</p>
+                      </Grid>
+                      <Grid item xs={7}>
+                        <LinearProgress
+                          sx={{
+                            bgcolor: "#d0d0d0",
+                            borderRadius: 4,
+                            height: 7,
+                          }}
+                          variant="determinate"
+                          value={10}
+                          color="error"
+                        />
+                      </Grid>
+                    </Grid>
+                  </Box>
+                </Grid>
               </Grid>
             </div>
           </section>
@@ -302,3 +379,5 @@ const ProductDetail = ({ params }) => {
 };
 
 export default ProductDetail;
+{
+}
