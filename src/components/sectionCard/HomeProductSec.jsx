@@ -35,8 +35,8 @@ const HomeCardsComponent = () => {
       </ul>
       <div className="flex gap-8 justify-center flex-wrap">
         {currentProducts.map((item, index) => (
-          <div className=" md:w-[260px]">
-            <ProductCard key={index} item={item} />
+          <div className=" md:w-[260px]" key={index}>
+            <ProductCard item={item} />
           </div>
         ))}
       </div>
