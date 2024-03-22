@@ -10,14 +10,14 @@ import {
 import { Button, Menu, Avatar, MenuItem } from "@mui/material";
 import { deepPurple } from "@mui/material/colors";
 import { navigation } from "../../data/index";
-
+import Link from "next/link";
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const [openAuthModal, setOpenAuthModal] = useState(false);
+  // const [openAuthModal, setOpenAuthModal] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const openUserMenu = Boolean(anchorEl);
   // const jwt = localStorage.getItem("jwt");
@@ -28,12 +28,12 @@ export default function Navbar() {
   const handleCloseUserMenu = (e) => {
     setAnchorEl(null);
   };
-  const handleOpen = () => {
-    setOpenAuthModal(true);
-  };
-  const handleClose = () => {
-    setOpenAuthModal(false);
-  };
+  // const handleOpen = () => {
+  //   setOpenAuthModal(true);
+  // };
+  // const handleClose = () => {
+  //   setOpenAuthModal(false);
+  // };
   return (
     <div className="bg-white  z-50">
       {/* Mobile menu */}
@@ -364,7 +364,7 @@ export default function Navbar() {
 
               <div className=" ml-auto flex items-center">
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                  {true ? (
+                  {false ? (
                     <div>
                       <Avatar
                         className="text-white"
@@ -395,9 +395,11 @@ export default function Navbar() {
                       </Menu>
                     </div>
                   ) : (
-                    <Button className=" text-sm font-medium text-gray-700 hover:text-gray-800">
-                      Signin
-                    </Button>
+                    <Link href="/login">
+                      <Button className=" text-sm font-medium text-gray-700 hover:text-gray-800">
+                        Signin
+                      </Button>
+                    </Link>
                   )}
                 </div>
                 {/* Search */}
