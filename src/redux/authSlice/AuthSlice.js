@@ -10,6 +10,7 @@ export const registerUser = createAsyncThunk(
         `${API_BASE_URL}/auth/signup`,
         userData
       );
+      console.log("User registered successfully:", response.data); // Adding console log
       return response.data.jwt;
     } catch (error) {
       throw error;
@@ -20,6 +21,7 @@ export const registerUser = createAsyncThunk(
 export const loginUser = createAsyncThunk("auth/login", async (userData) => {
   try {
     const response = await axios.post(`${API_BASE_URL}/auth/signin`, userData);
+    console.log("User logged in successfully:", response.data); // Adding console log
     return response.data.jwt;
   } catch (error) {
     throw error;
@@ -35,6 +37,7 @@ export const getUserInfo = createAsyncThunk(
       const response = await axios.get(`${API_BASE_URL}/api/users/profile`, {
         headers: { Authorization: jwt },
       });
+      console.log("User info retrieved successfully:", response.data); // Adding console log
       return response.data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -64,7 +67,6 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-
       .addCase(registerUser.pending, (state) => {
         state.isLoading = true;
         state.error = null;
@@ -77,7 +79,6 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.error = action.error.message;
       })
-
       .addCase(loginUser.pending, (state) => {
         state.isLoading = true;
         state.error = null;
@@ -90,7 +91,6 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.error = action.error.message;
       })
-
       .addCase(getUserInfo.pending, (state) => {
         state.isLoading = true;
         state.error = null;

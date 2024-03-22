@@ -1,7 +1,18 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserInfo, registerUser } from "../../redux/authSlice/AuthSlice";
 const Register = () => {
+  const dispatch = useDispatch();
+  const jwt = localStorage.getItem("jwt");
+  const { auth } = useSelector((store) => store);
+  useEffect(() => {
+    if (jwt) {
+      dispatch(getUserInfo(jwt));
+    }
+  }, [jwt, auth.jwt]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -12,6 +23,7 @@ const Register = () => {
       email: data.get("email"),
       password: data.get("password"),
     };
+    dispatch(registerUser(userData));
     console.log("userdata", userData);
   };
   return (
