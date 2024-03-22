@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { RadioGroup } from "@headlessui/react";
 import { Grid, Box, LinearProgress, Rating } from "@mui/material";
 import ProductReviews from "../../../components/DetailReviews/ProductReviews";
+import { ProductData } from "../../../data/index";
+import ProductCard from "../../../components/sectionCard/SectionCard";
 const product = {
   name: "Basic Tee 6-Pack",
   price: "$192",
@@ -370,6 +372,19 @@ const ProductDetail = ({ params }) => {
                   </Box>
                 </Grid>
               </Grid>
+            </div>
+          </section>
+
+          <section className="pt-10">
+            <h1 className="py-5 text-xl font-bold">Similer Products</h1>
+            <div className="flex flex-wrap space-x-5 space-y-5 justify-center items-center">
+              {ProductData.map((item, index) => {
+                return (
+                  <div className="w-[200px]" key={index}>
+                    <ProductCard item={item} />
+                  </div>
+                );
+              })}
             </div>
           </section>
         </div>
