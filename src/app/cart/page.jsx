@@ -38,7 +38,7 @@ const page = () => {
               </div>
             </div>
             <button className=" bg-[#9155fd] px-8 py-3 text-white mt-4 w-full">
-              Add To Cart
+              Checkout
             </button>
           </div>
         </div>
