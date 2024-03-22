@@ -9,7 +9,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { Button, Menu, Avatar, MenuItem } from "@mui/material";
 import { deepPurple } from "@mui/material/colors";
-import { navigation } from "@/data";
+import { navigation } from "../../data/index";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");

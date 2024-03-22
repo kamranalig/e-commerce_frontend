@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 
-import { ProductData } from "@/data";
+import { ProductData } from "../../data/index";
 import ProductCard from "./SectionCard";
 
 const HomeCardsComponent = () => {

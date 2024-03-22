@@ -1,7 +1,7 @@
-import ServicesComponent from "@/components/ServicesComponent";
-import CompanyCard from "@/components/companiesCards";
-import MainCarosal from "@/components/homeCarosal/HomeCarosal";
-import HomeCardsComponent from "@/components/sectionCard/HomeProductSec";
+import ServicesComponent from "../components/ServicesComponent";
+import CompanyCard from "../components/companiesCards";
+import MainCarosal from "../components/homeCarosal/HomeCarosal";
+import HomeCardsComponent from "../components/sectionCard/HomeProductSec";
 import Image from "next/image";
 import Link from "next/link";
 export default function Home() {
