@@ -2,11 +2,20 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { API_BASE_URL } from "../../config/apiConfig";
 
-// const token = localStorage.getItem("jwt");
+// Function to persist user authentication details in local storage
+const persistAuthState = (state) => {
+  localStorage.setItem("authState", JSON.stringify(state));
+};
+
+// Function to load user authentication details from local storage
+const loadAuthState = () => {
+  const authState = localStorage.getItem("authState");
+  return authState ? JSON.parse(authState) : null;
+};
 
 export const registerUser = createAsyncThunk(
   "auth/register",
-  async (userData, { rejectWithValue }) => {
+  async (userData, { rejectWithValue, dispatch }) => {
     try {
       const response = await axios.post(
         `${API_BASE_URL}/auth/signup`,
@@ -14,7 +23,8 @@ export const registerUser = createAsyncThunk(
       );
       const user = response.data;
       if (user.jwt) {
-        localStorage.setItem("jwt", user.jwt);
+        persistAuthState({ jwt: user.jwt, user }); // Store both JWT token and user object
+        dispatch(fetchUserDetails(user.jwt)); // Dispatch fetchUserDetails after successful registration
       }
       return user.jwt;
     } catch (error) {
@@ -25,7 +35,7 @@ export const registerUser = createAsyncThunk(
 
 export const loginUser = createAsyncThunk(
   "auth/login",
-  async (userData, { rejectWithValue }) => {
+  async (userData, { rejectWithValue, dispatch }) => {
     try {
       const response = await axios.post(
         `${API_BASE_URL}/auth/signin`,
@@ -33,7 +43,8 @@ export const loginUser = createAsyncThunk(
       );
       const user = response.data;
       if (user.jwt) {
-        localStorage.setItem("jwt", user.jwt);
+        persistAuthState({ jwt: user.jwt, user }); // Store both JWT token and user object
+        dispatch(fetchUserDetails(user.jwt)); // Dispatch fetchUserDetails after successful login
       }
       return user.jwt;
     } catch (error) {
@@ -42,13 +53,13 @@ export const loginUser = createAsyncThunk(
   }
 );
 
-export const getUser = createAsyncThunk(
-  "auth/getUser",
-  async (_, { rejectWithValue }) => {
+export const fetchUserDetails = createAsyncThunk(
+  "auth/fetchUserDetails",
+  async (token, { rejectWithValue }) => {
     try {
       const response = await axios.get(`${API_BASE_URL}/api/users/profile`, {
         headers: {
-          Authorization: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWZlMGQ2NGQxNTUxYjYzNzdkODhjNjEiLCJpYXQiOjE3MTExNDgzODksImV4cCI6MTcxMTMyMTE4OX0.KWzr_rZdEE0GfNv0GovI71Gv_Vfe-ZN6hHtT0I5mkF0`,
+          Authorization: `Bearer ${token}`,
         },
       });
       return response.data;
@@ -58,19 +69,21 @@ export const getUser = createAsyncThunk(
   }
 );
 
+const initialState = loadAuthState() || {
+  user: null,
+  isLoading: false,
+  error: null,
+  jwt: null,
+};
+
 const authSlice = createSlice({
   name: "auth",
-  initialState: {
-    user: null,
-    isLoading: false,
-    error: null,
-    jwt: null,
-  },
+  initialState,
   reducers: {
     logout: (state) => {
       state.jwt = null;
       state.user = null;
-      localStorage.removeItem("jwt");
+      localStorage.removeItem("authState"); // Remove the entire authState from local storage
     },
   },
   extraReducers: (builder) => {
@@ -101,16 +114,16 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       })
-      .addCase(getUser.pending, (state) => {
+      .addCase(fetchUserDetails.pending, (state) => {
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(getUser.fulfilled, (state, action) => {
+      .addCase(fetchUserDetails.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.user = action.payload;
       })
-      .addCase(getUser.rejected, (state, action) => {
+      .addCase(fetchUserDetails.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       });

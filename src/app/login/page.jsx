@@ -10,12 +10,6 @@ const Login = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const { isLoading, error, jwt, user } = useSelector((state) => state.auth);
-  useEffect(() => {
-    if (jwt) {
-      toast.success("User successfully Login");
-      router.push("/");
-    }
-  }, [jwt]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,6 +22,13 @@ const Login = () => {
     console.log("userdata", userData);
     await dispatch(loginUser(userData));
   };
+
+  useEffect(() => {
+    if (jwt) {
+      toast.success("User successfully Login");
+      router.push("/");
+    }
+  }, [jwt]);
 
   useEffect(() => {
     if (error) {

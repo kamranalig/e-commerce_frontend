@@ -1,22 +1,17 @@
 "use client";
 import React, { useEffect } from "react";
-import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../../redux/authSlice/AuthSlice";
 import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Link from "next/link";
+
 const Register = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const { isLoading, error, jwt } = useSelector((state) => state.auth);
 
-  useEffect(() => {
-    if (jwt) {
-      toast.success("User successfully registered");
-      router.push("/login");
-    }
-  }, [jwt, router]);
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -27,21 +22,29 @@ const Register = () => {
       email: data.get("email"),
       password: data.get("password"),
     };
+
     await dispatch(registerUser(userData));
   };
 
   useEffect(() => {
+    if (jwt) {
+      toast.success("User successfully registered. Please login.");
+      router.push("/login");
+    }
+  }, [jwt]);
+
+  useEffect(() => {
     if (error) {
-      toast.error("User already exists");
+      toast.error("User already exists or registration failed.");
     }
   }, [error]);
 
   return (
-    <div className="py-[70px] ">
+    <div className="py-[70px]">
       <div className="max-w-[1140px] mx-auto">
         <div className="flex gap-5">
           <div className="w-[100%]">
-            <h3 className=" uppercase mb-5 text-[#222] font-bold tracking-wide text-2xl">
+            <h3 className="uppercase mb-5 text-[#222] font-bold tracking-wide text-2xl">
               Create Account
             </h3>
             <div className="p-[30px] border-[1px] border-solid border-[#ddd] h-[320px]">
@@ -136,6 +139,7 @@ const Register = () => {
             </div>
           </div>
         </div>
+        <div></div>
       </div>
       <ToastContainer />
     </div>
