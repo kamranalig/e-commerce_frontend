@@ -16,9 +16,9 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import { useRouter } from "next/navigation";
-import { ProductData } from "@/data";
-import { filters, singleFilter } from "@/data/filter";
-import ProductCard from "@/components/sectionCard/SectionCard";
+import { ProductData } from "../../data/index";
+import { filters, singleFilter } from "../../data/filter";
+import ProductCard from "../../components/sectionCard/SectionCard";
 const sortOptions = [
   { name: "Price: Low to High", href: "#", current: false },
   { name: "Price: High to Low", href: "#", current: false },
@@ -27,7 +27,6 @@ const sortOptions = [
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
-
 export default function Products() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const router = useRouter();
@@ -291,13 +290,6 @@ export default function Products() {
 
               <button
                 type="button"
-                className="-m-2 ml-5 p-2 text-gray-400 hover:text-gray-500 sm:ml-7"
-              >
-                <span className="sr-only">View grid</span>
-                <Squares2X2Icon className="h-5 w-5" aria-hidden="true" />
-              </button>
-              <button
-                type="button"
                 className="-m-2 ml-4 p-2 text-gray-400 hover:text-gray-500 sm:ml-6 lg:hidden"
                 onClick={() => setMobileFiltersOpen(true)}
               >
@@ -390,10 +382,12 @@ export default function Products() {
                           <h3 className="-mx-2 -my-3 flow-root">
                             <Disclosure.Button className="flex w-full items-center justify-between bg-white px-2 py-3 text-gray-400 hover:text-gray-500">
                               <FormLabel
-                                className=" font-semibold text-gray-900"
+                                className="text-gray-900"
                                 id="demo-radio-buttons-group-label"
                               >
-                                {section.name}
+                                <span className=" font-semibold text-gray-900">
+                                  {section.name}
+                                </span>
                               </FormLabel>
                               <span className="ml-6 flex items-center">
                                 {open ? (

@@ -40,7 +40,7 @@ export default function Navbar() {
   };
 
   return (
-    <div className="bg-white  z-50">
+    <div className="bg-white  z-50 overflow-hidden">
       {/* Mobile menu */}
       <Transition.Root show={open} as={Fragment}>
         <Dialog as="div" className="relative z-40 lg:hidden" onClose={setOpen}>
