@@ -1,5 +1,5 @@
 "use client";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
 import {
   Bars3Icon,
@@ -7,19 +7,23 @@ import {
   ShoppingBagIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
+
 import { Button, Menu, Avatar, MenuItem } from "@mui/material";
 import { deepPurple } from "@mui/material/colors";
 import { navigation } from "../../data/index";
 import Link from "next/link";
+// import { useDispatch, useSelector } from "react-redux";
+// import { getUserInfo } from "../../redux/authSlice/AuthSlice";
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  // const [openAuthModal, setOpenAuthModal] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const openUserMenu = Boolean(anchorEl);
+  // const { auth } = useSelector((store) => store);
+  // const dispatch = useDispatch();
   // const jwt = localStorage.getItem("jwt");
 
   const handleUserClick = (e) => {
@@ -28,12 +32,13 @@ export default function Navbar() {
   const handleCloseUserMenu = (e) => {
     setAnchorEl(null);
   };
-  // const handleOpen = () => {
-  //   setOpenAuthModal(true);
-  // };
-  // const handleClose = () => {
-  //   setOpenAuthModal(false);
-  // };
+
+  // useEffect(() => {
+  //   if (jwt) {
+  //     dispatch(getUserInfo(jwt));
+  //   }
+  // }, [jwt, auth.jwt]);
+  // console.log("here is k", auth);
   return (
     <div className="bg-white  z-50">
       {/* Mobile menu */}
@@ -365,6 +370,7 @@ export default function Navbar() {
               <div className=" ml-auto flex items-center">
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
                   {false ? (
+                    // auth.user?.firstName ?
                     <div>
                       <Avatar
                         className="text-white"
@@ -378,7 +384,7 @@ export default function Navbar() {
                           cursor: "pointer",
                         }}
                       >
-                        K
+                        {/* {auth.user?.firstName[0].toUpperCase()} */}K
                       </Avatar>
                       <Menu
                         id="basic-menu"

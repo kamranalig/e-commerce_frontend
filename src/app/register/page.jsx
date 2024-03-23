@@ -2,18 +2,22 @@
 import React, { useEffect } from "react";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserInfo, registerUser } from "../../redux/authSlice/AuthSlice";
+import { registerUser } from "../../redux/authSlice/AuthSlice";
+import { useRouter } from "next/navigation";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Register = () => {
   const dispatch = useDispatch();
-  const jwt = localStorage.getItem("jwt");
-  const { auth } = useSelector((store) => store);
+  const router = useRouter();
+  const { isLoading, error, jwt } = useSelector((state) => state.auth);
+
   useEffect(() => {
     if (jwt) {
-      dispatch(getUserInfo(jwt));
+      toast.success("User successfully registered"); // Show success toast
+      router.push("/login");
     }
-  }, [jwt, auth.jwt]);
-
-  const handleSubmit = (e) => {
+  }, [jwt, router]);
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const data = new FormData(e.currentTarget);
@@ -23,9 +27,16 @@ const Register = () => {
       email: data.get("email"),
       password: data.get("password"),
     };
-    dispatch(registerUser(userData));
-    console.log("userdata", userData);
+    await dispatch(registerUser(userData));
   };
+
+  useEffect(() => {
+    if (error) {
+      toast.error("User already exists"); // Show error toast
+    }
+  }, [error]);
+
+  // console.log("kkkkkkkkkkkkkkk", auth);
   return (
     <div className="py-[70px] ">
       <div className="max-w-[1140px] mx-auto">
@@ -127,6 +138,7 @@ const Register = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };
