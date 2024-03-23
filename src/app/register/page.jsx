@@ -13,7 +13,7 @@ const Register = () => {
 
   useEffect(() => {
     if (jwt) {
-      toast.success("User successfully registered"); // Show success toast
+      toast.success("User successfully registered");
       router.push("/login");
     }
   }, [jwt, router]);
@@ -32,11 +32,10 @@ const Register = () => {
 
   useEffect(() => {
     if (error) {
-      toast.error("User already exists"); // Show error toast
+      toast.error("User already exists");
     }
   }, [error]);
 
-  // console.log("kkkkkkkkkkkkkkk", auth);
   return (
     <div className="py-[70px] ">
       <div className="max-w-[1140px] mx-auto">

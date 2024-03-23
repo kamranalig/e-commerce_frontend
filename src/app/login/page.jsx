@@ -1,8 +1,23 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser } from "../../redux/authSlice/AuthSlice";
+import { useRouter } from "next/navigation";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Link from "next/link";
 const Login = () => {
-  const handleSubmit = (e) => {
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const { isLoading, error, jwt, user } = useSelector((state) => state.auth);
+  useEffect(() => {
+    if (jwt) {
+      toast.success("User successfully Login");
+      router.push("/");
+    }
+  }, [jwt]);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const data = new FormData(e.currentTarget);
@@ -11,7 +26,14 @@ const Login = () => {
       password: data.get("password"),
     };
     console.log("userdata", userData);
+    await dispatch(loginUser(userData));
   };
+
+  useEffect(() => {
+    if (error) {
+      toast.error("Incorrect Password Or Email");
+    }
+  }, [error]);
   return (
     <>
       <div className="py-[70px]">
@@ -97,6 +119,7 @@ const Login = () => {
             </div>
           </div>
         </div>
+        <ToastContainer />
       </div>
     </>
   );
