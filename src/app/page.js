@@ -1,10 +1,41 @@
+"use client";
+// import { useEffect } from "react";
+// import { useDispatch, useSelector } from "react-redux";
+// import { findProducts } from "../redux/productSlice/ProductSlice";
 import ServicesComponent from "../components/ServicesComponent";
 import CompanyCard from "../components/companiesCards";
 import MainCarosal from "../components/homeCarosal/HomeCarosal";
 import HomeCardsComponent from "../components/sectionCard/HomeProductSec";
+
 import Image from "next/image";
 import Link from "next/link";
 export default function Home() {
+  // const dispatch = useDispatch();
+  // const { products, error, loading } = useSelector((state) => state.products);
+  // console.log(
+  //   "here is frontend products",
+  //   products.content,
+  //   "here is error",
+  //   error,
+  //   "here is loading",
+  //   loading
+  // );
+  // useEffect(() => {
+  //   dispatch(
+  //     findProducts({
+  //       colors: "",
+  //       sizes: "",
+  //       minPrice: "",
+  //       maxPrice: "",
+  //       minDiscount: "",
+  //       category: "",
+  //       stock: "",
+  //       sort: "",
+  //       pageNumber: 1,
+  //       pageSize: 10,
+  //     })
+  //   );
+  // }, [dispatch]);
   return (
     <>
       <MainCarosal />
