@@ -1,6 +1,5 @@
 "use client";
-import { Fragment, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { Fragment, useEffect, useState } from "react";
 import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
 import {
   Bars3Icon,
@@ -8,14 +7,14 @@ import {
   ShoppingBagIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
+import { useRouter } from "next/navigation";
 
 import { Button, Menu, Avatar, MenuItem } from "@mui/material";
 import { deepPurple } from "@mui/material/colors";
 import { navigation } from "../../data/index";
-// import {l}
 import Link from "next/link";
-import { logout } from "../../redux/authSlice/AuthSlice";
-
+// import { useDispatch, useSelector } from "react-redux";
+// import { getUserInfo } from "../../redux/authSlice/AuthSlice";
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
@@ -24,23 +23,20 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const openUserMenu = Boolean(anchorEl);
-  const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.auth);
-
-  console.log("here is my token and user", user?.user);
-
-  const handleLogout = async () => {
-    await dispatch(logout());
-  };
+  const router = useRouter();
   const handleUserClick = (e) => {
     setAnchorEl(e.currentTarget);
   };
   const handleCloseUserMenu = (e) => {
     setAnchorEl(null);
   };
+  const handleCategoryClick = (category, section, item, close) => {
+    router.push(`/${category.id}/${section.id}/${item.id}`);
+    close();
+  };
 
   return (
-    <div className="bg-white  z-50 overflow-hidden">
+    <div className="bg-white  z-50">
       {/* Mobile menu */}
       <Transition.Root show={open} as={Fragment}>
         <Dialog as="div" className="relative z-40 lg:hidden" onClose={setOpen}>
@@ -238,6 +234,12 @@ export default function Navbar() {
               {/* Flyout menus */}
               <Popover.Group className="hidden lg:ml-8 lg:block lg:self-stretch">
                 <div className="flex h-full space-x-8">
+                  <Link
+                    href="/"
+                    className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
+                  >
+                    Home
+                  </Link>
                   {navigation.categories.map((category) => (
                     <Popover key={category.name} className="flex">
                       {({ open, close }) => (
@@ -369,7 +371,8 @@ export default function Navbar() {
 
               <div className=" ml-auto flex items-center">
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                  {user?.user?.firstName ? (
+                  {true ? (
+                    // auth.user?.firstName ?
                     <div>
                       <Avatar
                         className="text-white"
@@ -383,7 +386,7 @@ export default function Navbar() {
                           cursor: "pointer",
                         }}
                       >
-                        {user?.user?.firstName[0].toUpperCase()}
+                        {/* {auth.user?.firstName[0].toUpperCase()} */}K
                       </Avatar>
                       <Menu
                         id="basic-menu"
@@ -395,8 +398,10 @@ export default function Navbar() {
                         <MenuItem onClick={handleCloseUserMenu}>
                           Profile
                         </MenuItem>
-                        <MenuItem>My Orders</MenuItem>
-                        <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                        <Link href="/order">
+                          <MenuItem>My Orders</MenuItem>
+                        </Link>
+                        <MenuItem>Logout</MenuItem>
                       </Menu>
                     </div>
                   ) : (
@@ -420,16 +425,18 @@ export default function Navbar() {
 
                 {/* Cart */}
                 <div className="ml-4 flow-root lg:ml-6">
-                  <Button className="group -m-2 flex items-center p-2">
-                    <ShoppingBagIcon
-                      className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
-                      aria-hidden="true"
-                    />
-                    <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
-                      2
-                    </span>
-                    <span className="sr-only">items in cart, view bag</span>
-                  </Button>
+                  <Link href="/cart">
+                    <Button className="group -m-2 flex items-center p-2">
+                      <ShoppingBagIcon
+                        className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                        aria-hidden="true"
+                      />
+                      <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
+                        2
+                      </span>
+                      <span className="sr-only">items in cart, view bag</span>
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </div>

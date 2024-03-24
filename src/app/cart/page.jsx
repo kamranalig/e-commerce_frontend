@@ -1,6 +1,6 @@
 import React from "react";
 import CartItems from "../../components/cartItems/CartItems";
-
+import Link from "next/link";
 const page = () => {
   return (
     <div className="max-w-[1140px] mx-auto">
@@ -37,9 +37,11 @@ const page = () => {
                 </div>
               </div>
             </div>
-            <button className=" bg-[#9155fd] px-8 py-3 text-white mt-4 w-full">
-              Checkout
-            </button>
+            <Link href="/checkout?step=2">
+              <button className=" bg-[#9155fd] px-8 py-3 text-white mt-4 w-full">
+                Checkout
+              </button>
+            </Link>
           </div>
         </div>
       </div>

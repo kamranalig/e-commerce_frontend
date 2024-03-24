@@ -1,217 +1,635 @@
 export const ProductData = [
   {
-    id: 1,
-    imgAlt: "Apple Watch Series 7 in colors pink, silver, and black",
-    imgSrc: "/p1.jpg",
-    title: "Arm Chair",
-    price: 200.0,
-    discountedPrice: 250.0,
-    totalPrice: 0,
-    pType: "New Arrival",
-    rating: 4,
-    quantity: 1,
-    maxQuantity: 10,
-    pDetail:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum quas amet, sed eum reiciendis esse eveniet ipsam quaerat laboriosam qui magnam officia ducimus autem illum sapiente iure odio ratione sunt?",
+    imgSrc:
+      "https://rukminim1.flixcart.com/image/612/612/xif0q/top/8/t/m/xxl-amrcrochetlacetop-madstitches-apparels-private-limited-original-imagr39r3kfmb5vy.jpeg?q=70",
+    brand: "Madstitches Apparels Private Limited",
+    title: "Party Regular Sleeves Floral Print, Printed Women White...",
+    color: "white",
+    discountedPrice: 449,
+    price: 2500,
+    discountPersent: 80,
+    size: [
+      {
+        name: "S",
+        quantity: 20,
+      },
+      {
+        name: "M",
+        quantity: 30,
+      },
+      {
+        name: "L",
+        quantity: 50,
+      },
+    ],
+    quantity: 100,
+    topLavelCategory: "Women",
+    secondLavelCategory: "Clothing",
+    thirdLavelCategory: "top",
+    description:
+      "A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style.",
   },
   {
-    id: 2,
-    imgAlt: "Apple Watch Series 7 in colors pink, silver, and black",
-    imgSrc: "/p2.jpg",
-    title: "Arm Chair",
-    price: 200.0,
-    discountedPrice: 250.0,
-    pType: "New Arrival",
-    rating: 4,
-    quantity: 1,
-    pDetail:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum quas amet, sed eum reiciendis esse eveniet ipsam quaerat laboriosam qui magnam officia ducimus autem illum sapiente iure odio ratione sunt?",
+    imgSrc:
+      "https://rukminim1.flixcart.com/image/612/612/kflftzk0/top/q/t/m/l-aw-2081w-aelomart-original-imafwyzhw8t2npsk.jpeg?q=70",
+    brand: "Aelomart",
+    title: "Casual Regular Sleeves Solid Women White Top",
+    color: "white",
+    discountedPrice: 499,
+    price: 1599,
+    discountPersent: 60,
+    size: [
+      {
+        name: "S",
+        quantity: 20,
+      },
+      {
+        name: "M",
+        quantity: 30,
+      },
+      {
+        name: "L",
+        quantity: 50,
+      },
+    ],
+    quantity: 100,
+    topLavelCategory: "Women",
+    secondLavelCategory: "Clothing",
+    thirdLavelCategory: "top",
+    description:
+      "A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style.",
   },
   {
-    id: 3,
-    imgAlt: "Apple Watch Series 7 in colors pink, silver, and black",
-    imgSrc: "/p3.jpg",
-    title: "Arm Chair",
-    price: 200.0,
-    discountedPrice: 250.0,
-    pType: "New Arrival",
-    rating: 4,
-    quantity: 1,
-    pDetail:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum quas amet, sed eum reiciendis esse eveniet ipsam quaerat laboriosam qui magnam officia ducimus autem illum sapiente iure odio ratione sunt?",
+    imgSrc:
+      "https://rukminim1.flixcart.com/image/612/612/ke1pnrk0/top/p/p/z/xl-tttp003846-tokyo-talkies-original-imafutjsuhhacuev.jpeg?q=70",
+    brand: "Tokyo Talkies",
+    title: "Casual Regular Sleeves Solid Women White Top",
+    color: "white",
+    discountedPrice: 419,
+    price: 1049,
+    discountPersent: 60,
+    size: [
+      {
+        name: "S",
+        quantity: 20,
+      },
+      {
+        name: "M",
+        quantity: 30,
+      },
+      {
+        name: "L",
+        quantity: 50,
+      },
+    ],
+    quantity: 100,
+    topLavelCategory: "Women",
+    secondLavelCategory: "Clothing",
+    thirdLavelCategory: "top",
+    description:
+      "A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style.",
   },
   {
-    id: 4,
-    imgAlt: "Apple Watch Series 7 in colors pink, silver, and black",
-    imgSrc: "/p4.jpg",
-    title: "Arm Chair",
-    pType: "New Arrival",
-    price: 200.0,
-    quantity: 1,
-    discountedPrice: 250.0,
-    rating: 4,
-    pDetail:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum quas amet, sed eum reiciendis esse eveniet ipsam quaerat laboriosam qui magnam officia ducimus autem illum sapiente iure odio ratione sunt?",
-  },
-
-  {
-    id: 5,
-    imgAlt: "Apple Watch Series 7 in colors pink, silver, and black",
-    imgSrc: "/p1.jpg",
-    title: "Arm Chair",
-    price: 200.0,
-    discountedPrice: 250.0,
-    pType: "Featured",
-    quantity: 1,
-    rating: 4,
-    pDetail:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum quas amet, sed eum reiciendis esse eveniet ipsam quaerat laboriosam qui magnam officia ducimus autem illum sapiente iure odio ratione sunt?",
-  },
-  {
-    id: 6,
-    imgAlt: "Apple Watch Series 7 in colors pink, silver, and black",
-    imgSrc: "/p2.jpg",
-    title: "Arm Chair",
-    price: 200.0,
-    quantity: 1,
-    discountedPrice: 250.0,
-    pType: "Featured",
-    rating: 4,
-    pDetail:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum quas amet, sed eum reiciendis esse eveniet ipsam quaerat laboriosam qui magnam officia ducimus autem illum sapiente iure odio ratione sunt?",
+    imgSrc:
+      "https://rukminim1.flixcart.com/image/612/612/xif0q/t-shirt/1/d/2/s-3813-the-dry-state-original-imagcfh833gdjeem-bb.jpeg?q=70",
+    brand: "THE DRY STATE",
+    title: "Women Printed Round Neck Pure Cotton White T-Shirt",
+    color: "white",
+    discountedPrice: 399,
+    price: 1399,
+    discountPersent: 70,
+    size: [
+      {
+        name: "S",
+        quantity: 20,
+      },
+      {
+        name: "M",
+        quantity: 30,
+      },
+      {
+        name: "L",
+        quantity: 50,
+      },
+    ],
+    quantity: 100,
+    topLavelCategory: "Women",
+    secondLavelCategory: "Clothing",
+    thirdLavelCategory: "top",
+    description:
+      "A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style.",
   },
   {
-    id: 7,
-    imgAlt: "Apple Watch Series 7 in colors pink, silver, and black",
-    imgSrc: "/p4.jpg",
-    title: "Arm Chair",
-    pType: "Featured",
-    quantity: 1,
-    price: 200.0,
-    discountedPrice: 250.0,
-    rating: 4,
-    pDetail:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum quas amet, sed eum reiciendis esse eveniet ipsam quaerat laboriosam qui magnam officia ducimus autem illum sapiente iure odio ratione sunt?",
+    imgSrc:
+      "https://rukminim1.flixcart.com/image/612/612/ky1vl3k0/t-shirt/f/u/6/m-2co-w-regular-must-blk-young-trendz-original-imagadhfgte57e67.jpeg?q=70",
+    brand: "Young trendz",
+    title: "Pack of 2 Women Solid Round Neck Pure Cotton White, Bla...",
+    color: "white",
+    discountedPrice: 354,
+    price: 2069,
+    discountPersent: 80,
+    size: [
+      {
+        name: "S",
+        quantity: 20,
+      },
+      {
+        name: "M",
+        quantity: 30,
+      },
+      {
+        name: "L",
+        quantity: 50,
+      },
+    ],
+    quantity: 100,
+    topLavelCategory: "Women",
+    secondLavelCategory: "Clothing",
+    thirdLavelCategory: "top",
+    description:
+      "A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style.",
   },
   {
-    id: 8,
-    imgAlt: "Apple Watch Series 7 in colors pink, silver, and black",
-    imgSrc: "/p4.jpg",
-    title: "Arm Chair",
-    price: 200.0,
-    discountedPrice: 250.0,
-    pType: "Featured",
-    quantity: 1,
-    rating: 4,
-    pDetail:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum quas amet, sed eum reiciendis esse eveniet ipsam quaerat laboriosam qui magnam officia ducimus autem illum sapiente iure odio ratione sunt?",
+    imgSrc:
+      "https://rukminim1.flixcart.com/image/612/612/xif0q/t-shirt/y/q/g/-original-imagmh86zacftnyd.jpeg?q=70",
+    brand: "LEVI'S",
+    title: "Women Graphic Print Crew Neck Pure Cotton White T-Shirt",
+    color: "white",
+    discountedPrice: 649,
+    price: 1299,
+    discountPersent: 50,
+    size: [
+      {
+        name: "S",
+        quantity: 20,
+      },
+      {
+        name: "M",
+        quantity: 30,
+      },
+      {
+        name: "L",
+        quantity: 50,
+      },
+    ],
+    quantity: 100,
+    topLavelCategory: "Women",
+    secondLavelCategory: "Clothing",
+    thirdLavelCategory: "top",
+    description:
+      "A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style.",
   },
   {
-    id: 9,
-    imgAlt: "Apple Watch Series 7 in colors pink, silver, and black",
-    imgSrc: "/p3.jpg",
-    title: "Arm Chair",
-    price: 200.0,
-    quantity: 1,
-    discountedPrice: 250.0,
-    pType: "Special",
-    rating: 4,
-    pDetail:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum quas amet, sed eum reiciendis esse eveniet ipsam quaerat laboriosam qui magnam officia ducimus autem illum sapiente iure odio ratione sunt?",
+    imgSrc:
+      "https://rukminim1.flixcart.com/image/612/612/xif0q/shopsy-top/l/3/f/l-shopsytee-sofia-white-dream-beauty-fashion-original-imagkmdhh7sdxyhg.jpeg?q=70",
+    brand: "Universaloutfit",
+    title: "Casual Puff Sleeves Solid Women White Top",
+    color: "white",
+    discountedPrice: 199,
+    price: 211,
+    discountPersent: 5,
+    size: [
+      {
+        name: "S",
+        quantity: 20,
+      },
+      {
+        name: "M",
+        quantity: 30,
+      },
+      {
+        name: "L",
+        quantity: 50,
+      },
+    ],
+    quantity: 100,
+    topLavelCategory: "Women",
+    secondLavelCategory: "Clothing",
+    thirdLavelCategory: "top",
+    description:
+      "A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style.",
   },
   {
-    id: 10,
-    imgAlt: "Apple Watch Series 7 in colors pink, silver, and black",
-    imgSrc: "/p3.jpg",
-    title: "Arm Chair",
-    price: 200.0,
-    quantity: 1,
-    discountedPrice: 250.0,
-    pType: "Special",
-    rating: 4,
-    pDetail:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum quas amet, sed eum reiciendis esse eveniet ipsam quaerat laboriosam qui magnam officia ducimus autem illum sapiente iure odio ratione sunt?",
+    imgSrc:
+      "https://rukminim1.flixcart.com/image/612/612/xif0q/top/u/z/r/xxl-1-amrpuffsleevecoffeegoldtop-aishu-fabric-original-imagr3zvntgfa3s8.jpeg?q=70",
+    brand: "Madstitches Apparels Private Limited",
+    title: "Party Regular Sleeves Floral Print, Printed Women White...",
+    color: "white",
+    discountedPrice: 426,
+    price: 2500,
+    discountPersent: 80,
+    size: [
+      {
+        name: "S",
+        quantity: 20,
+      },
+      {
+        name: "M",
+        quantity: 30,
+      },
+      {
+        name: "L",
+        quantity: 50,
+      },
+    ],
+    quantity: 100,
+    topLavelCategory: "Women",
+    secondLavelCategory: "Clothing",
+    thirdLavelCategory: "top",
+    description:
+      "A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style.",
   },
   {
-    id: 11,
-    imgAlt: "Apple Watch Series 7 in colors pink, silver, and black",
-    imgSrc: "/p2.jpg",
-    title: "Arm Chair",
-    price: 200.0,
-    quantity: 1,
-    discountedPrice: 250.0,
-    pType: "Special",
-    rating: 4,
-    pDetail:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum quas amet, sed eum reiciendis esse eveniet ipsam quaerat laboriosam qui magnam officia ducimus autem illum sapiente iure odio ratione sunt?",
+    imgSrc:
+      "https://rukminim1.flixcart.com/image/612/612/krtjgcw0/top/o/c/0/s-tsh-cartoon-wht-juneberry-original-imag5gqyp4xbsty4.jpeg?q=70",
+    brand: "JUNEBERRY",
+    title: "Women Printed Round Neck Pure Cotton White T-Shirt",
+    color: "white",
+    discountedPrice: 349,
+    price: 1199,
+    discountPersent: 70,
+    size: [
+      {
+        name: "S",
+        quantity: 20,
+      },
+      {
+        name: "M",
+        quantity: 30,
+      },
+      {
+        name: "L",
+        quantity: 50,
+      },
+    ],
+    quantity: 100,
+    topLavelCategory: "Women",
+    secondLavelCategory: "Clothing",
+    thirdLavelCategory: "top",
+    description:
+      "A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style.",
   },
   {
-    id: 12,
-    imgAlt: "Apple Watch Series 7 in colors pink, silver, and black",
-    imgSrc: "/p2.jpg",
-    title: "Arm Chair",
-    price: 200.0,
-    quantity: 1,
-    discountedPrice: 250.0,
-    pType: "Special",
-    rating: 4,
-    pDetail:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum quas amet, sed eum reiciendis esse eveniet ipsam quaerat laboriosam qui magnam officia ducimus autem illum sapiente iure odio ratione sunt?",
+    imgSrc:
+      "https://rukminim1.flixcart.com/image/612/612/xif0q/t-shirt/0/7/c/l-rzw01tiediewhite-rodzen-original-imagmptnf6adwuht.jpeg?q=70",
+    brand: "RodZen",
+    title: "Women Printed Round Neck Pure Cotton White T-Shirt",
+    color: "white",
+    discountedPrice: 404,
+    price: 1499,
+    discountPersent: 70,
+    size: [
+      {
+        name: "S",
+        quantity: 20,
+      },
+      {
+        name: "M",
+        quantity: 30,
+      },
+      {
+        name: "L",
+        quantity: 50,
+      },
+    ],
+    quantity: 100,
+    topLavelCategory: "Women",
+    secondLavelCategory: "Clothing",
+    thirdLavelCategory: "top",
+    description:
+      "A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style.",
   },
   {
-    id: 13,
-    imgAlt: "Apple Watch Series 7 in colors pink, silver, and black",
-    imgSrc: "/p1.jpg",
-    title: "Arm Chair",
-    price: 200.0,
-    quantity: 1,
-    discountedPrice: 250.0,
-    pType: "New Arrival",
-    rating: 4,
-    pDetail:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum quas amet, sed eum reiciendis esse eveniet ipsam quaerat laboriosam qui magnam officia ducimus autem illum sapiente iure odio ratione sunt?",
+    imgSrc:
+      "https://rukminim1.flixcart.com/image/612/612/xif0q/top/4/r/b/s-1-amrfullsleeveblackgreytop-aishu-fabric-original-imagr3zv2kzvn9nv.jpeg?q=70",
+    brand: "Madstitches Apparels Private Limited",
+    title: "Party Regular Sleeves Floral Print, Printed Women White...",
+    color: "white",
+    discountedPrice: 426,
+    price: 2500,
+    discountPersent: 80,
+    size: [
+      {
+        name: "S",
+        quantity: 20,
+      },
+      {
+        name: "M",
+        quantity: 30,
+      },
+      {
+        name: "L",
+        quantity: 50,
+      },
+    ],
+    quantity: 100,
+    topLavelCategory: "Women",
+    secondLavelCategory: "Clothing",
+    thirdLavelCategory: "top",
+    description:
+      "A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style.",
   },
   {
-    id: 14,
-    imgAlt: "Apple Watch Series 7 in colors pink, silver, and black",
-    imgSrc: "/p2.jpg",
-    title: "Arm Chair",
-    price: 200.0,
-    quantity: 1,
-    discountedPrice: 250.0,
-    pType: "New Arrival",
-    rating: 4,
-    pDetail:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum quas amet, sed eum reiciendis esse eveniet ipsam quaerat laboriosam qui magnam officia ducimus autem illum sapiente iure odio ratione sunt?",
+    imgSrc:
+      "https://rukminim1.flixcart.com/image/612/612/xif0q/top/6/o/5/xl-amrfullsleeveswhiteleafprinttop-keep-cart-original-imagqwxtjy3hjeft.jpeg?q=70",
+    brand: "Madstitches Apparels Private Limited",
+    title: "Party Regular Sleeves Floral Print, Printed Women White...",
+    color: "white",
+    discountedPrice: 449,
+    price: 2500,
+    discountPersent: 80,
+    size: [
+      {
+        name: "S",
+        quantity: 20,
+      },
+      {
+        name: "M",
+        quantity: 30,
+      },
+      {
+        name: "L",
+        quantity: 50,
+      },
+    ],
+    quantity: 100,
+    topLavelCategory: "Women",
+    secondLavelCategory: "Clothing",
+    thirdLavelCategory: "top",
+    description:
+      "A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style.",
   },
   {
-    id: 15,
-    imgAlt: "Apple Watch Series 7 in colors pink, silver, and black",
-    imgSrc: "/p3.jpg",
-    title: "Arm Chair",
-    price: 200.0,
-    quantity: 1,
-    discountedPrice: 250.0,
-    pType: "New Arrival",
-    rating: 4,
-    pDetail:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum quas amet, sed eum reiciendis esse eveniet ipsam quaerat laboriosam qui magnam officia ducimus autem illum sapiente iure odio ratione sunt?",
+    imgSrc:
+      "https://rukminim1.flixcart.com/image/612/612/xif0q/top/k/k/z/xl-redflowertop-marisy-original-imagkrh7pctnp7df.jpeg?q=70",
+    brand: "MARISY",
+    title: "Casual Bell Sleeves Printed Women White, Pink Top",
+    color: "white",
+    discountedPrice: 313,
+    price: 1699,
+    discountPersent: 80,
+    size: [
+      {
+        name: "S",
+        quantity: 20,
+      },
+      {
+        name: "M",
+        quantity: 30,
+      },
+      {
+        name: "L",
+        quantity: 50,
+      },
+    ],
+    quantity: 100,
+    topLavelCategory: "Women",
+    secondLavelCategory: "Clothing",
+    thirdLavelCategory: "top",
+    description:
+      "A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style.",
   },
   {
-    id: 16,
-    imgAlt: "Apple Watch Series 7 in colors pink, silver, and black",
-    imgSrc: "/p4.jpg",
-    title: "Arm Chair",
-    price: 200.0,
-    quantity: 1,
-    discountedPrice: 250.0,
-    pType: "New Arrival",
-    rating: 4,
-    pDetail:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum quas amet, sed eum reiciendis esse eveniet ipsam quaerat laboriosam qui magnam officia ducimus autem illum sapiente iure odio ratione sunt?",
+    imgSrc:
+      "https://rukminim1.flixcart.com/image/612/612/xif0q/top/o/k/z/xl-top006white-marisy-original-imaghje2qfppvkfw.jpeg?q=70",
+    brand: "MARISY",
+    title: "Casual Regular Sleeves Embroidered Women White Top",
+    color: "white",
+    discountedPrice: 301,
+    price: 1899,
+    discountPersent: 80,
+    size: [
+      {
+        name: "S",
+        quantity: 20,
+      },
+      {
+        name: "M",
+        quantity: 30,
+      },
+      {
+        name: "L",
+        quantity: 50,
+      },
+    ],
+    quantity: 100,
+    topLavelCategory: "Women",
+    secondLavelCategory: "Clothing",
+    thirdLavelCategory: "top",
+    description:
+      "A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style.",
+  },
+  {
+    imgSrc:
+      "https://rukminim1.flixcart.com/image/612/612/km9ht3k0/shirt/s/q/j/xl-ttsh001102-tokyo-talkies-original-imagf7d2pwrheat5.jpeg?q=70",
+    brand: "Tokyo Talkies",
+    title: "Women Regular Fit Solid Spread Collar Party Shirt",
+    color: "white",
+    discountedPrice: 384,
+    price: 1099,
+    discountPersent: 60,
+    size: [
+      {
+        name: "S",
+        quantity: 20,
+      },
+      {
+        name: "M",
+        quantity: 30,
+      },
+      {
+        name: "L",
+        quantity: 50,
+      },
+    ],
+    quantity: 100,
+    topLavelCategory: "Women",
+    secondLavelCategory: "Clothing",
+    thirdLavelCategory: "top",
+    description:
+      "A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style.",
+  },
+  {
+    imgSrc:
+      "https://rukminim1.flixcart.com/image/612/612/xif0q/t-shirt/i/l/w/m-3810-the-dry-state-original-imagmpta3phew4xg.jpeg?q=70",
+    brand: "THE DRY STATE",
+    title: "Women Tie & Dye Round Neck Pure Cotton Pink, White T-Sh...",
+    color: "white",
+    discountedPrice: 419,
+    price: 1399,
+    discountPersent: 70,
+    size: [
+      {
+        name: "S",
+        quantity: 20,
+      },
+      {
+        name: "M",
+        quantity: 30,
+      },
+      {
+        name: "L",
+        quantity: 50,
+      },
+    ],
+    quantity: 100,
+    topLavelCategory: "Women",
+    secondLavelCategory: "Clothing",
+    thirdLavelCategory: "top",
+    description:
+      "A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style.",
+  },
+  {
+    imgSrc:
+      "https://rukminim1.flixcart.com/image/612/612/xif0q/top/8/t/m/xxl-amrcrochetlacetop-madstitches-apparels-private-limited-original-imagr39r3kfmb5vy.jpeg?q=70",
+    brand: "Keep Cart",
+    title: "Party Regular Sleeves Floral Print, Printed Women White...",
+    color: "white",
+    discountedPrice: 449,
+    price: 2500,
+    discountPersent: 80,
+    size: [
+      {
+        name: "S",
+        quantity: 20,
+      },
+      {
+        name: "M",
+        quantity: 30,
+      },
+      {
+        name: "L",
+        quantity: 50,
+      },
+    ],
+    quantity: 100,
+    topLavelCategory: "Women",
+    secondLavelCategory: "Clothing",
+    thirdLavelCategory: "top",
+    description:
+      "A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style.",
+  },
+  {
+    imgSrc:
+      "https://rukminim1.flixcart.com/image/612/612/xif0q/shirt/a/f/n/s-drape-003-d11-shirt-dds-drape-and-dazzle-original-imagjuh6jztge6un.jpeg?q=70",
+    brand: "DRAPE AND DAZZLE",
+    title: "Women Regular Fit Solid Spread Collar Casual Shirt",
+    color: "white",
+    discountedPrice: 749,
+    price: 1199,
+    discountPersent: 30,
+    size: [
+      {
+        name: "S",
+        quantity: 20,
+      },
+      {
+        name: "M",
+        quantity: 30,
+      },
+      {
+        name: "L",
+        quantity: 50,
+      },
+    ],
+    quantity: 100,
+    topLavelCategory: "Women",
+    secondLavelCategory: "Clothing",
+    thirdLavelCategory: "top",
+    description:
+      "A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style.",
+  },
+  {
+    imgSrc:
+      "https://rukminim1.flixcart.com/image/612/612/xif0q/shopsy-top/l/3/f/l-shopsytee-sofia-white-dream-beauty-fashion-original-imagkmdhh7sdxyhg.jpeg?q=70",
+    brand: "Universaloutfit",
+    title: "Casual Puff Sleeves Solid Women White Top",
+    color: "white",
+    discountedPrice: 199,
+    price: 211,
+    discountPersent: 5,
+    size: [
+      {
+        name: "S",
+        quantity: 20,
+      },
+      {
+        name: "M",
+        quantity: 30,
+      },
+      {
+        name: "L",
+        quantity: 50,
+      },
+    ],
+    quantity: 100,
+    topLavelCategory: "Women",
+    secondLavelCategory: "Clothing",
+    thirdLavelCategory: "top",
+    description:
+      "A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style.",
+  },
+  {
+    imgSrc:
+      "https://rukminim1.flixcart.com/image/612/612/kqfj1jk0/top/d/0/m/s-plt216whiteshirt-pretty-loving-thing-original-imag4fx8a85enrmg.jpeg?q=70",
+    brand: "PRETTY LOVING THING",
+    title: "Casual Regular Sleeves Floral Print Women White Top",
+    color: "white",
+    discountedPrice: 394,
+    price: 999,
+    discountPersent: 60,
+    size: [
+      {
+        name: "S",
+        quantity: 20,
+      },
+      {
+        name: "M",
+        quantity: 30,
+      },
+      {
+        name: "L",
+        quantity: 50,
+      },
+    ],
+    quantity: 100,
+    topLavelCategory: "Women",
+    secondLavelCategory: "Clothing",
+    thirdLavelCategory: "top",
+    description:
+      "A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style.",
+  },
+  {
+    imgSrc:
+      "https://rukminim1.flixcart.com/image/612/612/xif0q/top/f/u/f/s-women-s-fit-and-flare-midi-knee-length-cotton-dress-for-women-original-imagryjv5h9fsn6h.jpeg?q=70",
+    brand: "CHACKO",
+    title: "Casual Kaftan Sleeve Floral Print Women White Top",
+    color: "white",
+    discountedPrice: 499,
+    price: 899,
+    discountPersent: 40,
+    size: [
+      {
+        name: "S",
+        quantity: 20,
+      },
+      {
+        name: "M",
+        quantity: 30,
+      },
+      {
+        name: "L",
+        quantity: 50,
+      },
+    ],
+    quantity: 100,
+    topLavelCategory: "Women",
+    secondLavelCategory: "Clothing",
+    thirdLavelCategory: "top",
+    description:
+      "A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style.",
   },
 ];
-
 export const navigation = {
   categories: [
     {
@@ -220,7 +638,7 @@ export const navigation = {
       featured: [
         {
           name: "New Arrivals",
-          href: "#",
+          href: "/",
           imageSrc:
             "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg",
           imageAlt:
@@ -228,7 +646,7 @@ export const navigation = {
         },
         {
           name: "Basic Tees",
-          href: "#",
+          href: "/",
           imageSrc:
             "https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg",
           imageAlt:
@@ -240,27 +658,27 @@ export const navigation = {
           id: "clothing",
           name: "Clothing",
           items: [
-            { name: "Tops", href: "#" },
-            { name: "Dresses", href: "#" },
-            { name: "Pants", href: "#" },
-            { name: "Denim", href: "#" },
-            { name: "Sweaters", href: "#" },
-            { name: "T-Shirts", href: "#" },
-            { name: "Jackets", href: "#" },
-            { name: "Activewear", href: "#" },
-            { name: "Browse All", href: "#" },
+            { name: "Tops", id: "top", href: "{women/clothing/tops}" },
+            { name: "Dresses", id: "women_dress" },
+            { name: "Women Jeans", id: "women_jeans" },
+            { name: "Lenga Choli", id: "Lengha_choli" },
+            { name: "Sweaters", id: "sweater" },
+            { name: "T-Shirts", id: "t-shirt" },
+            { name: "Jackets", id: "jecket" },
+            { name: "Gouns", id: "gouns" },
+            { name: "Sarees", id: "saree" },
           ],
         },
         {
           id: "accessories",
           name: "Accessories",
           items: [
-            { name: "Watches", href: "#" },
-            { name: "Wallets", href: "#" },
-            { name: "Bags", href: "#" },
-            { name: "Sunglasses", href: "#" },
-            { name: "Hats", href: "#" },
-            { name: "Belts", href: "#" },
+            { name: "Watches", id: "watch" },
+            { name: "Wallets", id: "wallet" },
+            { name: "Bags", id: "bag" },
+            { name: "Sunglasses", id: "sunglasse" },
+            { name: "Hats", id: "hat" },
+            { name: "Belts", id: "belt" },
           ],
         },
         {
@@ -282,7 +700,7 @@ export const navigation = {
       featured: [
         {
           name: "New Arrivals",
-          href: "#",
+          id: "#",
           imageSrc:
             "https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg",
           imageAlt:
@@ -290,7 +708,7 @@ export const navigation = {
         },
         {
           name: "Artwork Tees",
-          href: "#",
+          id: "#",
           imageSrc:
             "https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-06.jpg",
           imageAlt:
@@ -302,34 +720,38 @@ export const navigation = {
           id: "clothing",
           name: "Clothing",
           items: [
-            { name: "Tops", href: "#" },
-            { name: "Pants", href: "#" },
-            { name: "Sweaters", href: "#" },
-            { name: "T-Shirts", href: "#" },
-            { name: "Jackets", href: "#" },
-            { name: "Activewear", href: "#" },
-            { name: "Browse All", href: "#" },
+            {
+              name: "Mens Kurtas",
+              id: "mens_kurta",
+              href: "{men/clothing/mens_kurta}",
+            },
+            { name: "Shirt", id: "shirt" },
+            { name: "Men Jeans", id: "men_jeans" },
+            { name: "Sweaters", id: "sweaters" },
+            { name: "T-Shirts", id: "t-shirt" },
+            { name: "Jeckets", id: "jeckets" },
+            { name: "Activewear", id: "activewear" },
           ],
         },
         {
           id: "accessories",
           name: "Accessories",
           items: [
-            { name: "Watches", href: "#" },
-            { name: "Wallets", href: "#" },
-            { name: "Bags", href: "#" },
-            { name: "Sunglasses", href: "#" },
-            { name: "Hats", href: "#" },
-            { name: "Belts", href: "#" },
+            { name: "Watches", id: "#" },
+            { name: "Wallets", id: "#" },
+            { name: "Bags", id: "#" },
+            { name: "Sunglasses", id: "#" },
+            { name: "Hats", id: "#" },
+            { name: "Belts", id: "#" },
           ],
         },
         {
           id: "brands",
           name: "Brands",
           items: [
-            { name: "Re-Arranged", href: "#" },
-            { name: "Counterfeit", href: "#" },
-            { name: "Full Nelson", href: "#" },
+            { name: "Re-Arranged", id: "#" },
+            { name: "Counterfeit", id: "#" },
+            { name: "Full Nelson", id: "#" },
             { name: "My Way", href: "#" },
           ],
         },
@@ -337,7 +759,7 @@ export const navigation = {
     },
   ],
   pages: [
-    { name: "About us", href: "#" },
-    { name: "Contact Us", href: "#" },
+    { name: "About us", href: "/about" },
+    { name: "Contact Us", href: "/content" },
   ],
 };
