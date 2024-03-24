@@ -30,9 +30,9 @@ const ProductCard = ({ item }) => {
             <Image src="/cart.svg" alt="cart icon" height={28} width={28} />
           </div>
         )}
-        <Link href={`/collections/${item.id}`}>
+        <Link href={`/collections/${item._id}`}>
           <img
-            src={item.imgSrc}
+            src={item.imageUrl}
             alt={item.imgAlt}
             className="w-full object-cover mb-2 sm:mb-4"
           />

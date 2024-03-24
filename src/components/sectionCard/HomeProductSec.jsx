@@ -1,17 +1,15 @@
 "use client";
 import React, { useState } from "react";
-
-import { ProductData } from "../../data/index";
 import ProductCard from "./SectionCard";
 
-const HomeCardsComponent = () => {
+const HomeCardsComponent = ({ products }) => {
   const [activeFilter, setActiveFilter] = useState("All");
   const handleFilterChange = (filter) => {
     setActiveFilter(filter);
   };
   let filteredProducts = [];
-  if (ProductData) {
-    filteredProducts = ProductData.filter((item) => {
+  if (products?.content) {
+    filteredProducts = products?.content.filter((item) => {
       if (activeFilter === "All") return true;
       return item.pType === activeFilter;
     });
@@ -34,11 +32,12 @@ const HomeCardsComponent = () => {
         ))}
       </ul>
       <div className="flex gap-8 justify-center flex-wrap">
-        {currentProducts.map((item, index) => (
-          <div className=" md:w-[260px]" key={index}>
-            <ProductCard item={item} />
-          </div>
-        ))}
+        {currentProducts &&
+          currentProducts.map((item, index) => (
+            <div className=" md:w-[260px]" key={index}>
+              <ProductCard item={item} />
+            </div>
+          ))}
       </div>
     </>
   );

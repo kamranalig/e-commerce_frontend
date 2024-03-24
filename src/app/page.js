@@ -1,7 +1,7 @@
 "use client";
-// import { useEffect } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import { findProducts } from "../redux/productSlice/ProductSlice";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { findProducts } from "../redux/productSlice/ProductSlice";
 import ServicesComponent from "../components/ServicesComponent";
 import CompanyCard from "../components/companiesCards";
 import MainCarosal from "../components/homeCarosal/HomeCarosal";
@@ -10,32 +10,24 @@ import HomeCardsComponent from "../components/sectionCard/HomeProductSec";
 import Image from "next/image";
 import Link from "next/link";
 export default function Home() {
-  // const dispatch = useDispatch();
-  // const { products, error, loading } = useSelector((state) => state.products);
-  // console.log(
-  //   "here is frontend products",
-  //   products.content,
-  //   "here is error",
-  //   error,
-  //   "here is loading",
-  //   loading
-  // );
-  // useEffect(() => {
-  //   dispatch(
-  //     findProducts({
-  //       colors: "",
-  //       sizes: "",
-  //       minPrice: "",
-  //       maxPrice: "",
-  //       minDiscount: "",
-  //       category: "",
-  //       stock: "",
-  //       sort: "",
-  //       pageNumber: 1,
-  //       pageSize: 10,
-  //     })
-  //   );
-  // }, [dispatch]);
+  const dispatch = useDispatch();
+  const { products, error, loading } = useSelector((state) => state.products);
+  useEffect(() => {
+    dispatch(
+      findProducts({
+        colors: "",
+        sizes: "",
+        minPrice: "",
+        maxPrice: "",
+        minDiscount: "",
+        category: "",
+        stock: "",
+        sort: "",
+        pageNumber: 1,
+        pageSize: 10,
+      })
+    );
+  }, [dispatch]);
   return (
     <>
       <MainCarosal />
@@ -106,7 +98,7 @@ export default function Home() {
           <h2 className="relative text-center text-2xl md:text-[32px] font-bold pb-2 after:absolute after:w-[70px] after:bg-[#B0574F] after:'' after:left-0 after:right-0 after:h-[2px] after:mx-auto after:bottom-0 mb-7">
             SPECIAL PRODUCTS
           </h2>
-          <HomeCardsComponent />
+          <HomeCardsComponent products={products} />
         </div>
       </div>
       <hr className="max-w-[1140px] mx-auto" />

@@ -1,5 +1,5 @@
 "use client";
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
 import { Dialog, Disclosure, Menu, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import {
@@ -7,17 +7,21 @@ import {
   FunnelIcon,
   MinusIcon,
   PlusIcon,
-  Squares2X2Icon,
 } from "@heroicons/react/20/solid";
 import FilterListIcon from "@mui/icons-material/FilterList";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
-import { useRouter } from "next/navigation";
-import { ProductData } from "../../data/index";
+import {
+  Radio,
+  RadioGroup,
+  FormControlLabel,
+  FormControl,
+  FormLabel,
+  Pagination,
+} from "@mui/material";
+
+import { useDispatch, useSelector } from "react-redux";
 import { filters, singleFilter } from "../../data/filter";
+import { useRouter } from "next/navigation";
+import { findProducts } from "../../redux/productSlice/ProductSlice";
 import ProductCard from "../../components/sectionCard/SectionCard";
 const sortOptions = [
   { name: "Price: Low to High", href: "#", current: false },
@@ -29,8 +33,16 @@ function classNames(...classes) {
 }
 export default function Products() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  const dispatch = useDispatch();
+  const { products, error, loading } = useSelector((state) => state.products);
   const router = useRouter();
-
+  const handlePaginationChange = (event, value) => {
+    const searchParams = new URLSearchParams(window.location.search);
+    searchParams.set("page", value);
+    const query = searchParams.toString();
+    router.push(`?${query}`);
+  };
+  console.log(products?.totalPages);
   const handleFilter = (value, sectionId) => {
     if (typeof window !== "undefined") {
       const searchParams = new URLSearchParams(window.location.search);
@@ -62,6 +74,26 @@ export default function Products() {
     const query = searchParams.toString();
     window.history.replaceState(null, null, `?${query}`);
   };
+
+  useEffect(() => {
+    dispatch(
+      findProducts({
+        colors: "",
+        sizes: "",
+        minPrice: "",
+        maxPrice: "",
+        minDiscount: "",
+        category: "",
+        stock: "",
+        sort: "",
+        pageNumber: 1,
+        pageSize: 10,
+      })
+    );
+  }, [dispatch]);
+
+  console.log("here is my all products", products.content);
+
   return (
     <div className="bg-white">
       <div>
@@ -438,13 +470,24 @@ export default function Products() {
               {/* Product grid */}
               <div className="lg:col-span-4 col-span-2 w-full">
                 <div className="flex gap-6 flex-wrap justify-center bg-white py-5">
-                  {ProductData.map((item) => (
-                    <div className="w-[250px]">
-                      <ProductCard item={item} />
-                    </div>
-                  ))}
+                  {products?.content &&
+                    products?.content.map((item) => (
+                      <div className="w-[250px]">
+                        <ProductCard item={item} />
+                      </div>
+                    ))}
                 </div>
               </div>
+            </div>
+          </section>
+
+          <section className="w-full px=[3.6rem]">
+            <div className="px-4 py-5 flex justify-center">
+              <Pagination
+                count={products?.totalPages || 1}
+                color="secondary"
+                onChange={handlePaginationChange}
+              />
             </div>
           </section>
         </main>

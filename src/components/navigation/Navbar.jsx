@@ -31,7 +31,7 @@ export default function Navbar() {
     setAnchorEl(null);
   };
   const handleCategoryClick = (category, section, item, close) => {
-    router.push(`/${category.id}/${section.id}/${item.id}`);
+    router.push(`/collections`);
     close();
   };
 
