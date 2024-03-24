@@ -1,11 +1,16 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { RadioGroup } from "@headlessui/react";
 import { Grid, Box, LinearProgress, Rating } from "@mui/material";
 import ProductReviews from "../../../components/DetailReviews/ProductReviews";
 import { ProductData } from "../../../data/index";
 import ProductCard from "../../../components/sectionCard/SectionCard";
-const product = {
+import { findProductById } from "../../../redux/productSlice/ProductSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { addItemToCart } from "../../../redux/cartSlice/CartSlice";
+import { useRouter } from "next/navigation";
+
+const productss = {
   name: "Basic Tee 6-Pack",
   price: "$192",
   href: "#",
@@ -59,8 +64,21 @@ function classNames(...classes) {
 }
 
 const ProductDetail = ({ params }) => {
-  const [selectedColor, setSelectedColor] = useState(product.colors[0]);
-  const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
+  const { product, error, loading } = useSelector((state) => state.products);
+  const [selectedSize, setSelectedSize] = useState("");
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const handleAddToCart = () => {
+    const data = { productId: params.id, size: selectedSize.name };
+    console.log("data", data);
+    dispatch(addItemToCart(data));
+    router.push("/cart");
+  };
+
+  useEffect(() => {
+    dispatch(findProductById(params.id));
+  }, [params.id]);
+  console.log("here is single product", product);
   return (
     <div className="bg-white">
       <div className="pt-6">
@@ -69,7 +87,7 @@ const ProductDetail = ({ params }) => {
             role="list"
             className="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8"
           >
-            {product.breadcrumbs.map((breadcrumb) => (
+            {productss.breadcrumbs.map((breadcrumb) => (
               <li key={breadcrumb.id}>
                 <div className="flex items-center">
                   <a
@@ -93,11 +111,11 @@ const ProductDetail = ({ params }) => {
             ))}
             <li className="text-sm">
               <a
-                href={product.href}
+                href={productss.href}
                 aria-current="page"
                 className="font-medium text-gray-500 hover:text-gray-600"
               >
-                {product.name}
+                {productss.name}
               </a>
             </li>
           </ol>
@@ -108,13 +126,13 @@ const ProductDetail = ({ params }) => {
             <div className="flex flex-col items-center">
               <div className=" overflow-hidden rounded-lg max-w-[30rem] max-h-[35rem]">
                 <img
-                  src={product.images[0].src}
-                  alt={product.images[0].alt}
+                  src={product?.imageUrl}
+                  alt="image here"
                   className="h-full w-full object-cover object-center"
                 />
               </div>
               <div className="flex flex-wrap space-x-5 justify-center">
-                {product.images.map((item) => (
+                {productss.images.map((item) => (
                   <div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg w-[5rem] mt-4">
                     <img
                       src={item.src}
@@ -130,10 +148,10 @@ const ProductDetail = ({ params }) => {
             <div className="mx-auto max-w-2xl px-4 pb-16 sm:px-6  lg:col-span-1 lg:max-w-7xl lg:px-8 lg:pb-24 ">
               <div className="lg:col-span-2">
                 <h1 className="text-lg text-gray-900 font-semibold lg:text-xl">
-                  Universaloutfit
+                  {product?.brand}
                 </h1>
                 <h1 className="text-lg text-gray-900 opacity-60 lg:text-xl">
-                  {product.name}
+                  {product?.title}
                 </h1>
               </div>
 
@@ -141,9 +159,11 @@ const ProductDetail = ({ params }) => {
               <div className="mt-4 lg:row-span-3 lg:mt-0">
                 <h2 className="sr-only">Product information</h2>
                 <div className="flex space-x-5 items-center text-lg lg:text-xl text-gray-900 mt-6">
-                  <p className=" font-semibold">$199</p>
-                  <p className=" opacity-50 line-through">$211</p>
-                  <p className=" font-semibold text-green-600">5% Off</p>
+                  <p className=" font-semibold">${product?.discountedPrice}</p>
+                  <p className=" opacity-50 line-through">${product?.price}</p>
+                  <p className=" font-semibold text-green-600">
+                    {product?.discountPersent}% Off
+                  </p>
                 </div>
                 {/* Reviews */}
                 <div className="flex items-center space-x-3 mt-6">
@@ -154,7 +174,7 @@ const ProductDetail = ({ params }) => {
                   </p>
                 </div>
 
-                <form className="mt-10">
+                <div className="mt-10">
                   {/* Sizes */}
                   <div className="mt-10">
                     <div className="flex items-center justify-between">
@@ -172,7 +192,7 @@ const ProductDetail = ({ params }) => {
                         Choose a size
                       </RadioGroup.Label>
                       <div className="grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4">
-                        {product.sizes.map((size) => (
+                        {productss.sizes.map((size) => (
                           <RadioGroup.Option
                             key={size.name}
                             value={size}
@@ -232,10 +252,13 @@ const ProductDetail = ({ params }) => {
                     </RadioGroup>
                   </div>
 
-                  <button className=" bg-[#9155fd] px-8 py-4 text-white mt-4">
+                  <button
+                    className=" bg-[#9155fd] px-8 py-4 text-white mt-4"
+                    onClick={handleAddToCart}
+                  >
                     Add To Cart
                   </button>
-                </form>
+                </div>
               </div>
 
               <div className="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-16 lg:pr-8 lg:pt-6">
@@ -245,7 +268,7 @@ const ProductDetail = ({ params }) => {
 
                   <div className="space-y-6">
                     <p className="text-base text-gray-900">
-                      {product.description}
+                      {product?.description}
                     </p>
                   </div>
                 </div>
@@ -260,7 +283,7 @@ const ProductDetail = ({ params }) => {
                       role="list"
                       className="list-disc space-y-2 pl-4 text-sm"
                     >
-                      {product.highlights.map((highlight) => (
+                      {productss.highlights.map((highlight) => (
                         <li key={highlight} className="text-gray-400">
                           <span className="text-gray-600">{highlight}</span>
                         </li>
@@ -273,7 +296,7 @@ const ProductDetail = ({ params }) => {
                   <h2 className="text-sm font-medium text-gray-900">Details</h2>
 
                   <div className="mt-4 space-y-6">
-                    <p className="text-sm text-gray-600">{product.details}</p>
+                    <p className="text-sm text-gray-600">{productss.details}</p>
                   </div>
                 </div>
               </div>

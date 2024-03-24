@@ -21,7 +21,7 @@ export const addItemToCart = createAsyncThunk(
     try {
       const response = await api.put("/api/cart/add", requestData);
       const data = response.data;
-      console.log("here is put/add cart", data);
+      console.log("add item to cart", data);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
