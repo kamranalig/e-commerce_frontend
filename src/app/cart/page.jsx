@@ -1,14 +1,25 @@
-import React from "react";
-import CartItems from "../../components/cartItems/CartItems";
+"use client";
+import React, { useEffect } from "react";
 import Link from "next/link";
+import { useDispatch, useSelector } from "react-redux";
+import CartItems from "../../components/cartItems/CartItems";
+import { getCart } from "../../redux/cartSlice/CartSlice";
 const page = () => {
+  const dispatch = useDispatch();
+  const { cart, cartItems, updateCartItem, deleteCartItem } = useSelector(
+    (state) => state.cart
+  );
+
+  useEffect(() => {
+    dispatch(getCart());
+  }, [dispatch, deleteCartItem, updateCartItem]);
+
   return (
     <div className="max-w-[1140px] mx-auto">
       <div className="mt-10 relative lg:grid grid-cols-3 ">
         <div className="col-span-2">
-          {[1, 1, 1].map((item) => (
-            <CartItems />
-          ))}
+          {cart?.cartItems &&
+            cart?.cartItems.map((item) => <CartItems item={item} />)}
         </div>
         <div className="px-5 sticky top-0 h-[100vh] mt-5 lg:mt-0">
           <div className="border">
@@ -20,11 +31,11 @@ const page = () => {
               <div className=" space-y-3 font-semibold mb-6">
                 <div className="flex justify-between pt-3 text-black">
                   <span>Price</span>
-                  <span>$460</span>
+                  <span>${cart?.totalPrice}</span>
                 </div>
                 <div className="flex justify-between pt-3 text-black">
                   <span>Discount</span>
-                  <span className="text-green-600">$150</span>
+                  <span className="text-green-600">${cart?.discounte}</span>
                 </div>
                 <div className="flex justify-between pt-3 text-black">
                   <span>Delivery Charge</span>
@@ -33,7 +44,9 @@ const page = () => {
                 <hr />
                 <div className="flex justify-between pt-3 text-black">
                   <span>Total Amount</span>
-                  <span className="text-green-600">$4630</span>
+                  <span className="text-green-600">
+                    ${cart?.totalDiscountedPrice}
+                  </span>
                 </div>
               </div>
             </div>

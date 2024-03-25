@@ -5,7 +5,7 @@ export const getCart = createAsyncThunk(
   "cart/getCart",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await api.get("/api/cart_items/");
+      const response = await api.get("/api/cart/");
       const data = response.data;
       console.log("here is get cart", data);
       return data;
@@ -45,12 +45,12 @@ export const removeCartItem = createAsyncThunk(
 
 export const updateCartItem = createAsyncThunk(
   "cart/updateCartItem",
-  async ({ cartItemId, data }, { rejectWithValue }) => {
+  async ({ cartItemId, data }) => {
     try {
-      const response = await api.delete(`/api/cart_items/${cartItemId}`, data);
-      const data = response.data;
-      console.log("here is update cart", data);
-      return data;
+      const response = await api.put(`/api/cart_items/${cartItemId}`, data);
+      const update = response.data;
+      console.log("here is update cart", update);
+      return update;
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -59,9 +59,11 @@ export const updateCartItem = createAsyncThunk(
 
 const initialState = {
   cart: null,
-  cartItems: [],
+  cartItems: [], // This should be an array
   loading: false,
   error: null,
+  deleteCartItem: null,
+  xupdateCartItem: null,
 };
 
 const cartSlice = createSlice({
@@ -91,7 +93,7 @@ const cartSlice = createSlice({
       .addCase(addItemToCart.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        state.cartItems = [...state.cartItems, action.payload.cartItems];
+        state.cartItems = action.payload.cartItems;
       })
       .addCase(addItemToCart.rejected, (state, action) => {
         state.loading = false;
@@ -104,9 +106,7 @@ const cartSlice = createSlice({
       .addCase(removeCartItem.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        state.cartItems = state.cartItems.filter(
-          (item) => item.id !== action.payload
-        );
+        state.deleteCartItem = action.payload;
       })
       .addCase(removeCartItem.rejected, (state, action) => {
         state.loading = false;
@@ -119,9 +119,7 @@ const cartSlice = createSlice({
       .addCase(updateCartItem.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        state.cartItems = state.cartItems.map((item) =>
-          item.id === action.payload.id ? action.payload : item
-        );
+        state.updateCartItem = action.payload;
       })
       .addCase(updateCartItem.rejected, (state, action) => {
         state.loading = false;
