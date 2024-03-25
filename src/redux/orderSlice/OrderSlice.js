@@ -8,9 +8,6 @@ export const createOrder = createAsyncThunk(
       const response = await api.post("/api/orders/", reqData.address);
       const data = response.data;
       console.log("here os create order", data);
-      if (data.id) {
-        reqData.navigate({ search: `step=3&order_id=${data.id}` });
-      }
 
       return data;
     } catch (error) {

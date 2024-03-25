@@ -1,8 +1,15 @@
+"use client";
 import React from "react";
 import { Grid, Button, Box, TextField } from "@mui/material";
 import AddressCard from "../AddressCard/AddressCard";
+import { useDispatch } from "react-redux";
+import { createOrder } from "../../redux/orderSlice/OrderSlice";
+import { useRouter } from "next/navigation";
 const DeliveryAddressForm = () => {
-  const handleSubmit = (e) => {
+  const dispatch = useDispatch();
+  const router = useRouter();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const data = new FormData(e.currentTarget);
@@ -10,12 +17,17 @@ const DeliveryAddressForm = () => {
     const address = {
       firstName: data.get("firstName"),
       lastName: data.get("lastName"),
-      StreetAddress: data.get("address"),
+      streetAddress: data.get("address"),
       city: data.get("city"),
       state: data.get("state"),
       zipCode: data.get("zip"),
       mobile: data.get("phoneNumber"),
     };
+
+    const orderData = await dispatch(createOrder(address));
+
+    router.push("?step=3");
+
     console.log("address", address);
   };
   return (
@@ -24,6 +36,7 @@ const DeliveryAddressForm = () => {
         <Grid
           xs={12}
           lg={5}
+          item
           className="border rounded-e-md shadow-md h-[30.5rem] overflow-y-scroll mt-8"
         >
           <div className="p-5 py-7 border-b cursor-pointer">
