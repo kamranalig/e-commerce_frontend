@@ -1,35 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { api } from "../../config/apiConfig";
 
-export const createOrder = createAsyncThunk(
-  "order/createOrder",
-  async (reqData, { rejectWithValue }) => {
-    try {
-      const response = await api.post("/api/orders/", reqData.address);
-      const data = response.data;
-      console.log("here os create order", data);
-
-      return data;
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
-  }
-);
-
-export const getOrderById = createAsyncThunk(
-  "order/getOrderById",
-  async (orderId, { rejectWithValue }) => {
-    try {
-      const response = await api.get(`/api/orders/${orderId}`);
-      const data = response.data;
-      console.log("here os get order", data);
-      return data;
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
-  }
-);
-
+// Define initial state
 const initialState = {
   orders: [],
   order: null,
@@ -37,8 +9,37 @@ const initialState = {
   error: null,
 };
 
+// Define thunk for creating order
+export const createOrder = createAsyncThunk(
+  "orders/createOrder",
+  async (address, { rejectWithValue }) => {
+    try {
+      const { data } = await api.post("/api/orders/", address);
+      console.log("created order", data);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+// Define thunk for getting order by ID
+export const getOrderById = createAsyncThunk(
+  "orders/getOrderById",
+  async (orderId, { rejectWithValue }) => {
+    console.log("here is alllllllllllllllllllllllllllllliddssssss", orderId);
+    try {
+      const { data } = await api.get(`/api/orders/${orderId}`);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+// Create order slice
 const orderSlice = createSlice({
-  name: "order",
+  name: "orders",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -49,7 +50,6 @@ const orderSlice = createSlice({
       })
       .addCase(createOrder.fulfilled, (state, action) => {
         state.loading = false;
-        state.error = null;
         state.order = action.payload;
       })
       .addCase(createOrder.rejected, (state, action) => {
@@ -62,7 +62,6 @@ const orderSlice = createSlice({
       })
       .addCase(getOrderById.fulfilled, (state, action) => {
         state.loading = false;
-        state.error = null;
         state.order = action.payload;
       })
       .addCase(getOrderById.rejected, (state, action) => {

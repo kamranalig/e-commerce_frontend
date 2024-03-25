@@ -11,12 +11,12 @@ const CartItems = ({ item }) => {
   const dispatch = useDispatch();
 
   const handleUpdateCartItem = (quan) => {
-    const updatedQuantity = item.quantity + quan;
+    const updatedQuantity = item?.quantity + quan;
 
     if (updatedQuantity > 0) {
       const data_ = {
         data: { quantity: updatedQuantity },
-        cartItemId: item._id,
+        cartItemId: item?._id,
       };
 
       dispatch(updateCartItem(data_));

@@ -1,14 +1,14 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { Grid, Button, Box, TextField } from "@mui/material";
 import AddressCard from "../AddressCard/AddressCard";
 import { useDispatch } from "react-redux";
 import { createOrder } from "../../redux/orderSlice/OrderSlice";
 import { useRouter } from "next/navigation";
 const DeliveryAddressForm = () => {
+  const [orderID, setOrderID] = useState(null);
   const dispatch = useDispatch();
   const router = useRouter();
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -23,12 +23,20 @@ const DeliveryAddressForm = () => {
       zipCode: data.get("zip"),
       mobile: data.get("phoneNumber"),
     };
+    try {
+      const response = await dispatch(createOrder(address));
+      console.log("here is resp", response);
+      const createdOrder = response.payload;
+      console.log("here is creatwedOrder", createdOrder);
+      const orderId = createdOrder._id;
+      console.log("here is orderId", orderId);
+      setOrderID(orderId);
 
-    const orderData = await dispatch(createOrder(address));
-
-    router.push("?step=3");
-
-    console.log("address", address);
+      console.log(orderId);
+      router.push(`/checkout?step=3&orderId=${orderId}`);
+    } catch (error) {
+      console.error("Error creating order:", error);
+    }
   };
   return (
     <div>
