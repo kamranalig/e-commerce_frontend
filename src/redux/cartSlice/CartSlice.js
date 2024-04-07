@@ -63,7 +63,7 @@ const initialState = {
   loading: false,
   error: null,
   deleteCartItem: null,
-  xupdateCartItem: null,
+  updateCartItem: null,
 };
 
 const cartSlice = createSlice({

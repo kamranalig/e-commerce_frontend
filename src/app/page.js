@@ -28,6 +28,7 @@ export default function Home() {
       })
     );
   }, [dispatch]);
+
   return (
     <>
       <MainCarosal />
@@ -75,6 +76,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+
       <div className="bg-[url('/bg1.jpg')] bg-fixed w-screen bg-cover bg-no-repeat py-[30px] md:py-[190px] md:bg-[50%] bg-center overflow-hidden ">
         <div className="max-w-[1140px] mx-auto">
           <div className="text-center w-screen md:w-[500px] lg:w-[600px] bg-[#FFFFFF33] md:bg-transparent p-[25px]">

@@ -13,8 +13,9 @@ import { Button, Menu, Avatar, MenuItem } from "@mui/material";
 import { deepPurple } from "@mui/material/colors";
 import { navigation } from "../../data/index";
 import Link from "next/link";
-// import { useDispatch, useSelector } from "react-redux";
-// import { getUserInfo } from "../../redux/authSlice/AuthSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserInfo } from "../../redux/authSlice/AuthSlice";
+import { logout } from "../../redux/authSlice/AuthSlice";
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
@@ -23,7 +24,14 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const openUserMenu = Boolean(anchorEl);
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth);
+  console.log("here is my token and user", user?.user);
   const router = useRouter();
+
+  const handleLogout = async () => {
+    await dispatch(logout());
+  };
   const handleUserClick = (e) => {
     setAnchorEl(e.currentTarget);
   };
@@ -371,7 +379,7 @@ export default function Navbar() {
 
               <div className=" ml-auto flex items-center">
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                  {true ? (
+                  {user?.user?.firstName ? (
                     // auth.user?.firstName ?
                     <div>
                       <Avatar
@@ -386,7 +394,7 @@ export default function Navbar() {
                           cursor: "pointer",
                         }}
                       >
-                        {/* {auth.user?.firstName[0].toUpperCase()} */}K
+                        {user?.user?.firstName[0].toUpperCase()}
                       </Avatar>
                       <Menu
                         id="basic-menu"
@@ -401,7 +409,7 @@ export default function Navbar() {
                         <Link href="/order">
                           <MenuItem>My Orders</MenuItem>
                         </Link>
-                        <MenuItem>Logout</MenuItem>
+                        <MenuItem onClick={handleLogout}>Logout</MenuItem>
                       </Menu>
                     </div>
                   ) : (

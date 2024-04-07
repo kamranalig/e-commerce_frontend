@@ -13,6 +13,7 @@ const initialState = {
 export const createOrder = createAsyncThunk(
   "orders/createOrder",
   async (address, { rejectWithValue }) => {
+    console.log("here is addres", address);
     try {
       const { data } = await api.post("/api/orders/", address);
       console.log("created order", data);

@@ -2,11 +2,14 @@
 import React, { useState } from "react";
 import { Grid, Button, Box, TextField } from "@mui/material";
 import AddressCard from "../AddressCard/AddressCard";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createOrder } from "../../redux/orderSlice/OrderSlice";
 import { useRouter } from "next/navigation";
 const DeliveryAddressForm = () => {
   const [orderID, setOrderID] = useState(null);
+  const { order } = useSelector((state) => state);
+
+  console.log("here is user", order);
   const dispatch = useDispatch();
   const router = useRouter();
   const handleSubmit = async (e) => {
